@@ -1,0 +1,11 @@
+services:
+  web:
+    build:
+      context: ./web
+      args:
+        NEXT_PUBLIC_SANITY_PROJECT_ID: ${NEXT_PUBLIC_SANITY_PROJECT_ID}
+        NEXT_PUBLIC_SANITY_DATASET: ${NEXT_PUBLIC_SANITY_DATASET}
+        NEXT_PUBLIC_SANITY_API_VERSION: ${NEXT_PUBLIC_SANITY_API_VERSION}
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3090:3000"

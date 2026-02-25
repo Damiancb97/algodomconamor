@@ -195,3 +195,59 @@ En `web/package.json`, cambia el script:
 - ✔ Paleta de marca aplicada
 - ✔ Navbar y Footer personalizados
 - ✔ Conexión con Sanity operativa
+- ✔ Docker + Cloudflare Tunnel configurados
+
+---
+
+## 🐳 Despliegue con Docker + Cloudflare Tunnel
+
+### Requisitos
+
+- Docker y Docker Compose instalados
+- Cuenta en [Cloudflare Zero Trust](https://one.dash.cloudflare.com) con un túnel creado
+
+### Variables de entorno
+
+Copia el archivo de ejemplo y rellena los valores:
+
+```bash
+cp .env.example .env
+```
+
+```env
+NEXT_PUBLIC_SANITY_PROJECT_ID=wfz6uel0
+NEXT_PUBLIC_SANITY_DATASET=production
+NEXT_PUBLIC_SANITY_API_VERSION=2026-02-24
+
+CLOUDFLARE_TUNNEL_TOKEN=tu-token-aqui
+```
+
+> El token se obtiene en: **Zero Trust → Networks → Tunnels → tu túnel → Configure**
+
+### Arrancar
+
+```bash
+docker compose up -d --build
+```
+
+### Ver logs
+
+```bash
+docker compose logs -f
+```
+
+---
+
+## 🏗️ Arquitectura de despliegue
+
+```txt
+Servidor Ubuntu
+│
+├── Docker (Next.js standalone)
+│     └── Puerto interno: 3000
+│     └── Expuesto en host: 127.0.0.1:3090
+│
+└── Cloudflared (contenedor Docker)
+      └── algodomconamor.damiancb.com
+      └── → http://web:3000
+```
