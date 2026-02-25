@@ -1,10 +1,23 @@
-export default function ProductosPage() {
-  return (
-    <main className="mx-auto max-w-6xl p-6">
-      <h1 className="text-3xl font-semibold">Productos</h1>
-      <p className="mt-2 text-slate-600">
-        Explora nuestras prendas tejidas a mano.
-      </p>
-    </main>
-  );
+import { sanityClient } from "@/lib/sanity.client";
+import ProductsGrid, { type Product } from "@/components/ProductsGrid";
+
+export const metadata = {
+  title: "Productos",
+};
+
+const query = `*[_type == "product"] | order(publishedAt desc) {
+  _id,
+  title,
+  slug,
+  category,
+  gender,
+  ageRanges,
+  price,
+  status,
+  "images": images[0..0]{asset, alt}
+}`;
+
+export default async function ProductosPage() {
+  const products = await sanityClient.fetch<Product[]>(query);
+  return <ProductsGrid products={products} />;
 }

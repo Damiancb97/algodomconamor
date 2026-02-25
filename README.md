@@ -1,142 +1,197 @@
 # 🧶 Algodóm con Amor
 
-Web catálogo para prendas tejidas a mano para bebés.
+Catálogo web para prendas tejidas a mano para bebés.
 
-Proyecto dividido en dos aplicaciones independientes:
+El proyecto está dividido en **dos aplicaciones independientes**:
 
-- `web/` → Frontend público (Next.js + TailwindCSS)
-- `studio/` → Panel de administración (Sanity Studio)
+- **`web/`** → Frontend público (**Next.js + TailwindCSS v4**)
+- **`studio/`** → Panel de administración (**Sanity Studio v3**)
 
 ---
 
-# 🏗️ Estructura del Proyecto
+## 🗂️ Estructura del proyecto
+
+```txt
 algodomconamor/
-│
-├── web/ → Aplicación Next.js (frontend)
-│ ├── src/
-│ ├── public/
-│ ├── package.json
-│ └── node_modules/
-│
-├── studio/ → Panel de administración Sanity
-│ ├── schemaTypes/
-│ ├── sanity.config.ts
-│ ├── package.json
-│ └── node_modules/
-│
+├── web/                 # Aplicación Next.js (frontend)
+│   ├── src/
+│   ├── public/
+│   └── package.json
+├── studio/              # Sanity Studio (admin)
+│   ├── schemaTypes/
+│   ├── sanity.config.ts
+│   └── package.json
 └── README.md
+```
 
-
-⚠️ Importante:  
-NO debe existir `node_modules` en la raíz del proyecto.
-
-Cada aplicación (`web` y `studio`) tiene sus propias dependencias.
+> ⚠️ Importante: **NO debe existir `node_modules` en la raíz** del repo.  
+> Cada app (`web` y `studio`) gestiona sus dependencias por separado.
 
 ---
 
-# 🚀 Cómo iniciar el proyecto
+## ✅ Requisitos
 
-## 1️⃣ Iniciar la web (Next.js)
+- Node.js + npm instalados
+- (Opcional) Cuenta/proyecto de Sanity configurado para el Studio
+
+---
+
+## 🚀 Cómo iniciar el proyecto (paso a paso)
+
+### 1) Iniciar la web (Next.js)
+
+1. Entra a la carpeta `web`:
+   ```bash
+   cd web
+   ```
+
+2. Instala dependencias:
+   ```bash
+   npm install
+   ```
+
+3. Levanta el servidor de desarrollo:
+   ```bash
+   npm run dev
+   ```
+
+4. Abre en el navegador:
+   - http://localhost:3000
+
+> ✅ Buena práctica: **ejecuta Next.js siempre desde `web/`**, nunca desde la raíz del proyecto.
+
+---
+
+### 2) Iniciar el panel de administración (Sanity Studio)
+
+1. Entra a la carpeta `studio`:
+   ```bash
+   cd studio
+   ```
+
+2. Instala dependencias:
+   ```bash
+   npm install
+   ```
+
+3. Levanta el Studio:
+   ```bash
+   npm run dev
+   ```
+
+4. Abre en el navegador:
+   - http://localhost:3333
+
+---
+
+## 📡 Acceder desde otro dispositivo (misma red)
+
+Para permitir acceso a la web desde otro equipo conectado a la misma red:
 
 ```bash
 cd web
-npm install
-npm run dev
+npm run dev -- --hostname 0.0.0.0 --port 3000
+```
 
+Luego entra desde el otro dispositivo a:
 
-2️⃣ Iniciar el panel de administración (Sanity Studio)
-cd studio
-npm install
-npm run dev
+- `http://IP_DEL_SERVIDOR:3000`
 
-El studio estará disponible en:
-http://localhost:3333
+---
 
+## 🗂️ Gestión de contenido (Sanity)
 
-⚙️ Tecnologías utilizadas
-🖥️ Web
-Next.js (App Router)
-TailwindCSS v4
-TypeScript
-Sanity Client (para consumir contenido)
+- Los productos se administran desde: `studio/`
+- Los datos se almacenan en **Sanity Content Lake**
+- La web consume contenido usando: `@sanity/client`
 
-🛠️ Studio
-Sanity v3
-Schema personalizado para productos
-Gestión de imágenes integrada (Sanity CDN)
+---
 
+## 🎨 TailwindCSS v4 (cómo está configurado)
 
-🎨 TailwindCSS (v4)
-Este proyecto usa Tailwind v4.
-En lugar de:
+Este proyecto usa **Tailwind v4**. En lugar de:
+
+```css
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+```
 
 Se utiliza:
-@import "tailwindcss";
 
-Los colores personalizados se definen mediante variables CSS en:
-web/src/app/global.css
+```css
+@import "tailwindcss";
+```
+
+### Colores de marca
+
+Los colores personalizados se definen como **variables CSS** en:
+
+- `web/src/app/global.css`
 
 Ejemplo:
+
+```css
 :root {
   --color-cream: #F6EFE7;
   --color-pink: #F6C8CF;
   --color-blue: #8EC6E8;
   --color-brown: #6B4A3C;
 }
+```
 
-Y se usan así en los componentes:
-"bg-[var(--color-cream)] text-[var(--color-brown)]"
+Uso en componentes:
 
-✅ Solución correcta
+- `bg-[var(--color-cream)] text-[var(--color-brown)]`
 
-Siempre ejecutar:
+> Si cambias configuración/estilos base y no se refleja: **reinicia el server dev**.
 
+---
+
+## ⚠️ Nota (Next 16 + Turbopack)
+
+En algunos entornos, **Next.js 16 con Turbopack** puede fallar al resolver:
+
+```css
+@import "tailwindcss";
+```
+
+y mostrar:
+
+- `Can't resolve 'tailwindcss'`
+
+### ✅ Solución (arrancar con Webpack)
+
+```bash
 cd web
-npm run dev
+npm run dev -- --webpack
+```
 
-Y nunca desde la raíz del proyecto.
+### ✅ Solución permanente (opcional)
 
-📡 Acceder desde otro dispositivo (misma red)
+En `web/package.json`, cambia el script:
 
-Para permitir acceso desde otro equipo en la red:
+- De:
+  - `"dev": "next dev"`
+- A:
+  - `"dev": "next dev --webpack"`
 
-cd web
-npm run dev -- --hostname 0.0.0.0 --port 3000
+---
 
-Luego acceder desde:
+## 📦 Buenas prácticas
 
-http://IP_DEL_SERVIDOR:3000
-🗂️ Gestión de contenido
+- No subir `node_modules` al repositorio.
+- Ejecutar `npm install` al clonar/instalar en un entorno nuevo.
+- Mantener separadas las dependencias de `web/` y `studio/`.
+- No ejecutar Next.js desde la raíz del proyecto.
 
-Todos los productos se gestionan desde:
+---
 
-studio/
+## 🧵 Estado actual
 
-Los datos se almacenan en Sanity (Content Lake).
-
-La web consume los datos mediante:
-
-@sanity/client
-📦 Buenas prácticas
-
-No subir node_modules al repositorio.
-
-Ejecutar npm install en cada entorno nuevo.
-
-Mantener separadas las dependencias de web y studio.
-
-No ejecutar Next desde la raíz del proyecto.
-
-Reiniciar el servidor tras cambios en configuración de Tailwind.
-
-🧵 Estado actual
-
-✔ Web funcionando
-✔ Studio funcionando
-✔ Tailwind v4 configurado
-✔ Paleta de marca aplicada
-✔ Navbar y Footer personalizados
-✔ Conexión con Sanity operativa
+- ✔ Web funcionando
+- ✔ Studio funcionando
+- ✔ Tailwind v4 configurado
+- ✔ Paleta de marca aplicada
+- ✔ Navbar y Footer personalizados
+- ✔ Conexión con Sanity operativa

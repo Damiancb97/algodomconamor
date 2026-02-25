@@ -8,8 +8,8 @@ const navItems = [
   { href: "/contacto", label: "Contacto" },
 ];
 
-const INSTAGRAM_URL = "https://instagram.com/"; // cambia
-const WHATSAPP_URL = "https://wa.me/34123456789"; // cambia
+const INSTAGRAM_URL = "https://instagram.com/algodomconamor";
+const WHATSAPP_URL = "https://wa.me/34616640570";
 
 export default function Navbar() {
   return (
