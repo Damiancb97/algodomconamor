@@ -63,17 +63,23 @@ const contacts = [
 
 export default function ContactoPage() {
   return (
-    <main className="mx-auto max-w-2xl px-6 py-12">
-      {/* Cabecera */}
-      <div className="mb-10 text-center">
-        <h1 className="text-3xl font-semibold text-[var(--color-brown)]">
-          Contacta con nosotros
-        </h1>
-        <p className="mt-3 text-[var(--color-brown)]/60 leading-relaxed">
-          ¿Tienes alguna pregunta o quieres hacer un encargo personalizado?<br />
-          Escríbenos y te respondemos lo antes posible.
-        </p>
-      </div>
+    <>
+      {/* Hero */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-[var(--color-blue)]/35 via-[var(--color-pink)]/25 to-[var(--color-cream)] py-16 px-6">
+        <div className="pointer-events-none absolute -top-16 -right-16 h-64 w-64 rounded-full bg-[var(--color-pink)]/30 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-10 -left-10 h-48 w-48 rounded-full bg-[var(--color-blue)]/25 blur-2xl" />
+        <div className="relative mx-auto max-w-2xl text-center">
+          <h1 className="text-4xl font-semibold leading-tight text-[var(--color-brown)] sm:text-5xl">
+            Contacta con nosotros
+          </h1>
+          <p className="mx-auto mt-4 max-w-md text-[var(--color-brown)]/65 leading-relaxed">
+            ¿Tienes alguna pregunta o quieres hacer un encargo personalizado?<br />
+            Escríbenos y te respondemos lo antes posible.
+          </p>
+        </div>
+      </section>
+
+      <main className="mx-auto max-w-2xl px-6 py-12">
 
       {/* Tarjetas de contacto */}
       <div className="flex flex-col gap-4">
@@ -122,5 +128,6 @@ export default function ContactoPage() {
         Respondemos normalmente en menos de 24 horas en días laborables.
       </p>
     </main>
+    </>
   );
 }

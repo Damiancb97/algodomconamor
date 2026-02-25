@@ -128,13 +128,22 @@ export default function ProductsGrid({ products }: { products: Product[] }) {
   }
 
   return (
+    <>
+      {/* Hero */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-[var(--color-blue)]/35 via-[var(--color-pink)]/25 to-[var(--color-cream)] py-16 px-6">
+        <div className="pointer-events-none absolute -top-16 -right-16 h-64 w-64 rounded-full bg-[var(--color-pink)]/30 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-10 -left-10 h-48 w-48 rounded-full bg-[var(--color-blue)]/25 blur-2xl" />
+        <div className="relative mx-auto max-w-2xl text-center">
+          <h1 className="text-4xl font-semibold leading-tight text-[var(--color-brown)] sm:text-5xl">
+            Nuestros productos
+          </h1>
+          <p className="mx-auto mt-4 max-w-md text-[var(--color-brown)]/65 leading-relaxed">
+            Prendas tejidas a mano para bebés y recién nacidos.
+          </p>
+        </div>
+      </section>
+
     <main className="mx-auto max-w-6xl p-6">
-      <header className="mb-10 text-center">
-        <h1 className="text-3xl font-semibold text-[var(--color-brown)]">Productos</h1>
-        <p className="mt-2 text-[var(--color-brown)]/60">
-          Prendas tejidas a mano para bebés y recién nacidos.
-        </p>
-      </header>
 
       {/* Filtros */}
       <section className="mb-8 rounded-2xl border border-[var(--color-pink)]/40 bg-[var(--color-pink-pale)] p-5 space-y-3">
@@ -220,5 +229,6 @@ export default function ProductsGrid({ products }: { products: Product[] }) {
         </section>
       )}
     </main>
+    </>
   );
 }

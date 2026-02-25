@@ -37,10 +37,10 @@ export default async function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[var(--color-pink)] via-[#F9D8DD] to-[var(--color-cream)] py-20 px-6">
+      <section className="relative overflow-hidden bg-gradient-to-br from-[var(--color-blue)]/35 via-[var(--color-pink)]/25 to-[var(--color-cream)] py-20 px-6">
         {/* Destellos decorativos */}
-        <div className="pointer-events-none absolute -top-20 -right-20 h-72 w-72 rounded-full bg-[var(--color-blue)]/25 blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-10 -left-10 h-56 w-56 rounded-full bg-[var(--color-pink)]/50 blur-2xl" />
+        <div className="pointer-events-none absolute -top-16 -right-16 h-64 w-64 rounded-full bg-[var(--color-pink)]/30 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-10 -left-10 h-48 w-48 rounded-full bg-[var(--color-blue)]/25 blur-2xl" />
 
         <div className="relative mx-auto max-w-2xl text-center">
           <span className="mb-4 inline-block rounded-full border border-[var(--color-brown)]/20 bg-white/50 px-4 py-1 text-xs font-medium uppercase tracking-widest text-[var(--color-brown)]/60 backdrop-blur-sm">
