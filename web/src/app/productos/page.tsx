@@ -1,6 +1,8 @@
 import { sanityClient } from "@/lib/sanity.client";
 import ProductsGrid, { type Product } from "@/components/ProductsGrid";
 
+export const revalidate = 60;
+
 export const metadata = {
   title: "Productos",
 };

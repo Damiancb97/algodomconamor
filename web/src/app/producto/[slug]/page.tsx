@@ -3,6 +3,8 @@ import { sanityClient } from "@/lib/sanity.client";
 import { notFound } from "next/navigation";
 import ProductGallery from "@/components/ProductGallery";
 
+export const revalidate = 60;
+
 type Product = {
   title: string;
   description?: string;

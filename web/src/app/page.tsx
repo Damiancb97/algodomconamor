@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { sanityClient } from "@/lib/sanity.client";
+
+export const revalidate = 60;
 import { urlFor } from "@/lib/sanity.image";
 
 type Product = {
