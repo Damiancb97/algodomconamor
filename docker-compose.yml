@@ -9,3 +9,10 @@ services:
     restart: unless-stopped
     ports:
       - "127.0.0.1:3090:3000"
+
+  studio:
+    build:
+      context: ./studio
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3091:80"
