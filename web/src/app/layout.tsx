@@ -5,12 +5,12 @@ import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: {
-    default: "Algodóm con Amor",
-    template: "%s | Algodóm con Amor",
+    default: "Algodón con Amor",
+    template: "%s | Algodón con Amor",
   },
   description: "Prendas tejidas a mano para bebés y recién nacidos.",
   icons: {
-    icon: "/favicon.ico",
+    icon: "/favicon.png",
     apple: "/icon-192.png",
   },
 };

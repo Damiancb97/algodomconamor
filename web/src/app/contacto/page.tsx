@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 const WHATSAPP_NUMBER = "+34 616 64 05 70";
 const WHATSAPP_URL = "https://wa.me/34616640570";
 const EMAIL = "lorenads@hotmail.com";
-const INSTAGRAM_URL = "https://instagram.com/algodomconamor";
+const INSTAGRAM_URL = "https://instagram.com/algodonconamorbyl";
 
 const contacts = [
   {
@@ -47,7 +47,7 @@ const contacts = [
     id: "instagram",
     label: "Instagram",
     description: "Síguenos para ver las últimas creaciones y novedades.",
-    value: "@algodoмconamor",
+    value: "@algodonconamorbyl",
     href: INSTAGRAM_URL,
     external: true,
     accent: "var(--color-pink)",

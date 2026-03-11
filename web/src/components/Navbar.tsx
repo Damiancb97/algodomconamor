@@ -12,7 +12,7 @@ const navItems = [
   { href: "/contacto", label: "Contacto" },
 ];
 
-const INSTAGRAM_URL = "https://instagram.com/algodomconamor";
+const INSTAGRAM_URL = "https://instagram.com/algodonconamorbyl";
 const WHATSAPP_URL = "https://wa.me/34616640570";
 
 export default function Navbar() {
@@ -26,14 +26,14 @@ export default function Navbar() {
         <Link href="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
           <Image
             src="/logo.png"
-            alt="Algodóm con Amor"
+            alt="Algodón con Amor"
             width={44}
             height={44}
             className="rounded-lg"
             priority
           />
           <span className="font-semibold tracking-tight text-[var(--color-brown)]">
-            Algodóm con Amor
+            Algodón con Amor
           </span>
         </Link>
 

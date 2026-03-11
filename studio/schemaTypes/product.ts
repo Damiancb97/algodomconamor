@@ -121,30 +121,9 @@ export const productType = defineType({
           ],
         }),
       ],
-      validation: (Rule) => Rule.required().min(1),
     }),
-    defineField({
-      name: "videos",
-      title: "Vídeos",
-      type: "array",
-      description: "Vídeos del producto (mp4, mov…). Opcional.",
-      of: [
-        defineField({
-          name: "videoItem",
-          title: "Vídeo",
-          type: "file",
-          options: { accept: "video/*" },
-          fields: [
-            defineField({
-              name: "title",
-              title: "Título (opcional)",
-              type: "string",
-            }),
-          ],
-        }),
-      ],
-    }),
-    defineField({
+
+defineField({
       name: "featured",
       title: "Destacado",
       type: "boolean",

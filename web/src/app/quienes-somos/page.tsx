@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Quiénes somos",
-  description: "Conoce la historia de Algodóm con Amor, prendas tejidas a mano para bebés.",
+  description: "Conoce la historia de Algodón con Amor, prendas tejidas a mano para bebés.",
 };
 
 const values = [
@@ -58,7 +58,7 @@ export default function QuienesSomosPage() {
             Quiénes somos
           </h1>
           <p className="mx-auto mt-5 max-w-lg text-[var(--color-brown)]/65 leading-relaxed">
-            Algodóm con Amor nace con la idea de crear prendas únicas, tejidas a mano, con mimo y materiales de calidad para bebés y recién nacidos.
+            Algodón con Amor nace con la idea de crear prendas únicas, tejidas a mano, con mimo y materiales de calidad para bebés y recién nacidos.
           </p>
         </div>
       </section>

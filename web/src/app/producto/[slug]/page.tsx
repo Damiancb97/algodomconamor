@@ -197,7 +197,7 @@ export default async function ProductPage({ params }: PageProps) {
           {/* CTAs */}
           <div className="flex flex-col gap-3 sm:flex-row">
             <a
-              href="https://instagram.com/algodomconamor"
+              href="https://instagram.com/algodonconamorbyl"
               target="_blank"
               rel="noreferrer"
               className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-[var(--color-pink)] px-5 py-3 text-sm font-medium text-[var(--color-brown)] transition hover:opacity-85"
